@@ -21,3 +21,32 @@ QT_CHARTS_USE_NAMESPACE
 
     class MainWindow : public QMainWindow
 {
+    Q_OBJECT
+
+public:
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+
+private slots:
+    void on_knopkaPlyus_clicked();
+    void on_knopkaGrafika_clicked();
+
+private:
+    Ui::MainWindow *ui;
+    Kalkulyator moyKalkulyator;
+};
+
+#endif // MAINWINDOW_H
+kalkulytor.cpp:#include "kalkulyator.h"
+
+Kalkulyator::Kalkulyator() {}
+
+double Kalkulyator::summirovat(double a, double b) {
+    double summa = a + b;
+    istoriyaSumm.append(summa);
+    return summa;
+}
+
+QList<double> Kalkulyator::poluchitIstoriyu() const {
+    return istoriyaSumm;
+}
